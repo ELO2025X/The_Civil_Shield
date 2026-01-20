@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VICTIM'S PORTAL | Civil Shield</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .portal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .download-section {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .template-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .template-card:hover {
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .template-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .template-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="glass-header">
+        <div class="logo-container">
+            <i class="fa-solid fa-shield-halved logo-icon"></i>
+            <span class="logo-text">CIVIL<span class="highlight">SHIELD</span></span>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="grant_radar.html" class="nav-link">Grant Radar</a>
+            <a href="metric_trap.html" class="nav-link">The Metric Trap</a>
+            <a href="#" class="nav-link text-main">Victim's Portal</a>
+            <a href="https://github.com/ELO2025X/The_Civil_Shield" class="btn-primary"><i
+                    class="fa-brands fa-github"></i> Source Code</a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 8rem 10% 4rem;">
+        <h1 class="section-title text-center">The <span class="highlight">Victim's Portal</span></h1>
+        <p class="text-center text-muted" style="max-width: 700px; margin: 0 auto;">
+            You are not a statistic. You are a citizen. Break the silence and join the class-action data set.
+        </p>
+
+        <div class="portal-grid">
+            <!-- LEFT: SHARE YOUR STORY -->
+            <div class="form-section">
+                <h3 style="margin-bottom: 1.5rem"><i class="fa-solid fa-bullhorn text-red"></i> Report a Pretextual Stop
+                </h3>
+                <form id="grievanceForm">
+                    <div class="form-group">
+                        <label>Date of Incident</label>
+                        <input type="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location (Zip Code / Highway)</label>
+                        <input type="text" placeholder="e.g. 77905, Hwy 59" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Officer Name / Badge # (If known)</label>
+                        <input type="text" placeholder="Officer Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>The Pretext (Why did they say they stopped you?)</label>
+                        <select>
+                            <option>Traffic Violation (Speeding/Light)</option>
+                            <option>Good Samaritan / "Welfare Check"</option>
+                            <option>Suspicious Vehicle</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description of Events</label>
+                        <textarea
+                            placeholder="Describe the stop. Did they ask to search? Did they mention drugs/cash immediately?"></textarea>
+                    </div>
+
+                    <button type="button" class="btn-large glow-effect" style="width: 100%"
+                        onclick="alert('Report Encrypted and Logged to Civil Shield Database.')">SUBMIT REPORT <i
+                            class="fa-solid fa-paper-plane"></i></button>
+                    <p class="text-muted" style="font-size: 0.8rem; margin-top: 1rem; text-align: center;"><i
+                            class="fa-solid fa-lock"></i> End-to-End Encrypted. Anonymous Submission Supported.</p>
+                </form>
+            </div>
+
+            <!-- RIGHT: GRIEVANCE TEMPLATES -->
+            <div class="download-section">
+                <h3 style="margin-bottom: 1.5rem"><i class="fa-solid fa-file-contract text-red"></i> The "Grievance
+                    Generator"</h3>
+                <p class="text-muted" style="margin-bottom: 2rem">Download filed-tested legal templates to hold
+                    officials accountable. Just fill in the blanks.</p>
+
+                <!-- Template 1 -->
+                <div class="template-card">
+                    <div class="template-info">
+                        <h4><i class="fa-solid fa-scale-balanced"></i> State Bar Grievance</h4>
+                        <p>Format: Official Texas Bar Complaint Form</p>
+                    </div>
+                    <button class="btn-outline" onclick="alert('Downloading Template...')"><i
+                            class="fa-solid fa-download"></i> PDF</button>
+                </div>
+
+                <!-- Template 2 -->
+                <div class="template-card">
+                    <div class="template-info">
+                        <h4><i class="fa-solid fa-building-columns"></i> Attorney General Complaint</h4>
+                        <p>Target: Review of Public Information Act Violations</p>
+                    </div>
+                    <button class="btn-outline" onclick="alert('Downloading Template...')"><i
+                            class="fa-solid fa-download"></i> PDF</button>
+                </div>
+
+                <!-- Template 3 -->
+                <div class="template-card">
+                    <div class="template-info">
+                        <h4><i class="fa-solid fa-video"></i> Spoliation Letter</h4>
+                        <p>Demand preservation of Body Cam footage.</p>
+                    </div>
+                    <button class="btn-outline" onclick="alert('Downloading Template...')"><i
+                            class="fa-solid fa-download"></i> DOCX</button>
+                </div>
+
+                <div class="alert-box"
+                    style="background: rgba(239, 68, 68, 0.1); padding: 1rem; border-radius: 8px; margin-top: 2rem; border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <small><strong><i class="fa-solid fa-triangle-exclamation"></i> DISCLAIMER:</strong> These templates
+                        are for educational purposes. We provide the weapon; you pull the trigger.</small>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fa-solid fa-shield-halved"></i> CIVIL SHIELD
+            </div>
+            <p class="copyright">Open Source Intelligence for the People. &copy; 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
