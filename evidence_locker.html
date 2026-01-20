@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE LOCKER | Civil Shield</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .locker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .evidence-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .evidence-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--danger);
+        }
+
+        .evidence-header {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .evidence-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .tag-financial {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary);
+        }
+
+        .tag-forensic {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .tag-spoliation {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+
+        .evidence-body {
+            padding: 1.5rem;
+        }
+
+        .evidence-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .evidence-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .placeholder-doc {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--glass-border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="glass-header">
+        <div class="logo-container">
+            <i class="fa-solid fa-shield-halved logo-icon"></i>
+            <span class="logo-text">CIVIL<span class="highlight">SHIELD</span></span>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="grant_radar.html" class="nav-link">Grant Radar</a>
+            <a href="#" class="nav-link text-main">Evidence Locker</a>
+            <a href="https://github.com/ELO2025X/The_Civil_Shield" class="btn-primary"><i
+                    class="fa-brands fa-github"></i> Source Code</a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 8rem 10% 4rem;">
+        <div class="badge-container" style="text-align: center; margin-bottom: 1rem;">
+            <span class="status-badge pulse-red">PUBLIC RECORD MIRROR SITE</span>
+        </div>
+        <h1 class="section-title text-center">The <span class="highlight">Evidence Locker</span></h1>
+        <p class="text-center text-muted" style="max-width: 700px; margin: 0 auto;">
+            Victoria County uses "Solid Border, Inc." to block public records. We use the Blockchain to preserve them.
+            <strong>This is the secondary docket they cannot seal.</strong>
+        </p>
+
+        <div class="locker-grid">
+            <!-- ITEM 1: The $94k Wall -->
+            <div class="evidence-card">
+                <div class="evidence-header">
+                    <span class="mono">EXH-FIN-01</span>
+                    <span class="evidence-tag tag-financial">Financial Fraud</span>
+                </div>
+                <div class="evidence-body">
+                    <h3 class="evidence-title">The $94k Wall</h3>
+                    <p class="evidence-desc">Invoice #SB-2025-004. Victoria County paid Solid Border, Inc.
+                        <strong>$94,519.15</strong> of taxpayer money used to redact and hide public records.</p>
+                    <div class="placeholder-doc">
+                        <i class="fa-solid fa-file-invoice-dollar fa-2x"></i>
+                        <span>INVOICE PENDING UPLOAD</span>
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; margin-left: 0;">View
+                        Metadata</button>
+                </div>
+            </div>
+
+            <!-- ITEM 2: Clean Lab Results -->
+            <div class="evidence-card">
+                <div class="evidence-header">
+                    <span class="mono">EXH-LAB-01</span>
+                    <span class="evidence-tag tag-forensic">Exculpatory</span>
+                </div>
+                <div class="evidence-body">
+                    <h3 class="evidence-title">The Clean Lab</h3>
+                    <p class="evidence-desc">Side-by-side comparison: The "Tampering" Charge vs. The
+                        <strong>Negative</strong> Toxicology Report. Proves the charge was manufactured.</p>
+                    <div class="placeholder-doc">
+                        <i class="fa-solid fa-flask fa-2x"></i>
+                        <span>LAB REPORT PENDING UPLOAD</span>
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; margin-left: 0;">View
+                        Analysis</button>
+                </div>
+            </div>
+
+            <!-- ITEM 3: May 16th Video -->
+            <div class="evidence-card">
+                <div class="evidence-header">
+                    <span class="mono">EXH-VID-01</span>
+                    <span class="evidence-tag tag-spoliation">Gaslighting</span>
+                </div>
+                <div class="evidence-body">
+                    <h3 class="evidence-title">The May 16th Arrest</h3>
+                    <p class="evidence-desc">Timestamped breakdown of the "Good Samaritan" stop. Reveals the specific
+                        moment officers shifted from "Investigation" to "Intimidation."</p>
+                    <div class="placeholder-doc">
+                        <i class="fa-solid fa-video fa-2x"></i>
+                        <span>VIDEO PENDING UPLOAD</span>
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; margin-left: 0;">Watch
+                        Breakdown</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fa-solid fa-shield-halved"></i> CIVIL SHIELD
+            </div>
+            <p class="copyright">Open Source Intelligence for the People. &copy; 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

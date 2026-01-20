@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRANT RADAR | Civil Shield</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .radar-interface {
+            display: flex;
+            gap: 2rem;
+            margin-top: 4rem;
+            min-height: 60vh;
+        }
+
+        .input-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .visual-panel {
+            flex: 2;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .terminal-window {
+            flex: 1;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #10b981;
+            overflow-y: auto;
+            text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+        }
+
+        .log-line {
+            margin-bottom: 0.2rem;
+            opacity: 0;
+            animation: fadeIn 0.1s forwards;
+        }
+
+        .log-warn {
+            color: #f59e0b;
+        }
+
+        .log-danger {
+            color: #ef4444;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .map-overlay {
+            height: 200px;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(59, 130, 246, 0.05);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .match-badge {
+            font-size: 2rem;
+            color: var(--danger);
+            border: 2px solid var(--danger);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="glass-header">
+        <div class="logo-container">
+            <i class="fa-solid fa-shield-halved logo-icon"></i>
+            <span class="logo-text">CIVIL<span class="highlight">SHIELD</span></span>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link text-main">Grant Radar</a>
+            <a href="#" class="nav-link">Vault</a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 8rem 10% 4rem;">
+        <h1 class="section-title">The <span class="gradient-text-alt">Grant Radar</span></h1>
+        <p class="text-center text-muted">Correlate your arrest data with State & Federal funding streams.</p>
+
+        <div class="radar-interface">
+            <div class="input-panel">
+                <form id="radarForm">
+                    <div class="form-group">
+                        <label>Zip Code of Arrest</label>
+                        <input type="text" id="zipCode" placeholder="e.g. 77905" value="77905">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Agency Involved</label>
+                        <select id="agency">
+                            <option value="vcso">Victoria County Sheriff's Office</option>
+                            <option value="vpd">Victoria Police Dept</option>
+                            <option value="dps">Texas DPS</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Primary Charge Category</label>
+                        <select id="charge">
+                            <option value="interdiction">Interdiction / Traffic (Drugs/Human Smuggling)</option>
+                            <option value="assault">Assault / Person Crimes</option>
+                            <option value="theft">Theft / Property</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-large glow-effect" style="width: 100%">INITIATE SCAN</button>
+                </form>
+            </div>
+
+            <div class="visual-panel">
+                <div class="terminal-window" id="terminalOutput">
+                    <div class="log-line">System Ready...</div>
+                    <div class="log-line">Waiting for connection...</div>
+                </div>
+                <div class="map-overlay">
+                    <i class="fa-solid fa-radar fa-spin"
+                        style="font-size: 3rem; color: var(--primary); opacity: 0.5;"></i>
+                </div>
+
+                <div class="result-overlay" id="resultOverlay">
+                    <div class="match-badge">FUNDING MATCH DETECTED</div>
+                    <h3 style="margin-bottom: 0.5rem">Grant ID: <span class="mono text-red">#4862402</span> (Operation
+                        Lone Star)</h3>
+                    <p class="text-muted">Quota Probability: <strong>94.2%</strong></p>
+                    <button class="btn-primary" style="margin-top: 2rem" onclick="location.reload()">Export
+                        Report</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/radar.js"></script>
+</body>
+
+</html>

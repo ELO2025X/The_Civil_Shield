@@ -37,7 +37,9 @@ body {
 }
 
 /* Typography */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: var(--font-heading);
     font-weight: 700;
 }
@@ -103,6 +105,11 @@ h1, h2, h3 {
     color: var(--text-main);
 }
 
+.text-main {
+    color: var(--text-main);
+    border-bottom: 1px solid var(--primary);
+}
+
 /* Buttons */
 .btn-primary {
     background: rgba(255, 255, 255, 0.1);
@@ -155,13 +162,80 @@ h1, h2, h3 {
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* Docket Watch Section */
+.docket-watch {
+    margin-top: 80px;
+    /* Below header */
+    background: rgba(239, 68, 68, 0.05);
+    /* Very light red bg */
+    border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 500;
+}
+
+.docket-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.live-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--danger);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--danger);
+    animation: blink 1.5s infinite ease-in-out;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+.docket-title {
+    color: var(--danger);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.docket-text {
+    color: var(--text-main);
+}
+
+.docket-time {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    border: 1px solid var(--glass-border);
+}
+
 /* Sections */
 .hero-section {
-    min-height: 100vh;
+    min-height: 90vh;
+    /* Reduced height to account for docket watch */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8rem 10% 4rem;
+    padding: 4rem 10% 4rem;
+    /* Reduced top padding */
     position: relative;
     z-index: 1;
 }
@@ -204,7 +278,8 @@ h1, h2, h3 {
 .radar-scan {
     width: 100%;
     height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle circle */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Very subtle circle */
     border-radius: 50%;
     position: absolute;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
@@ -223,8 +298,13 @@ h1, h2, h3 {
 }
 
 @keyframes scan {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Data Card */
@@ -243,9 +323,17 @@ h1, h2, h3 {
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .card-header {
