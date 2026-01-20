@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE METRIC TRAP | Civil Shield</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .flow-node {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            width: 250px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .flow-node:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .node-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .node-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .node-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .flow-arrow {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--glass-border), var(--primary), var(--glass-border));
+            position: relative;
+            margin: 0 1rem;
+        }
+
+        .flow-arrow::after {
+            content: '\f0da';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -5px;
+            top: -10px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .sb1851-tracker {
+            background: rgba(20, 20, 22, 0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .status-light {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ef4444;
+            /* Red for non-compliance */
+            box-shadow: 0 0 20px #ef4444;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% {
+                box-shadow: 0 0 10px #ef4444;
+            }
+
+            50% {
+                box-shadow: 0 0 30px #ef4444;
+            }
+
+            100% {
+                box-shadow: 0 0 10px #ef4444;
+            }
+        }
+
+        .compliance-details {
+            flex: 1;
+            margin-left: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="glass-header">
+        <div class="logo-container">
+            <i class="fa-solid fa-shield-halved logo-icon"></i>
+            <span class="logo-text">CIVIL<span class="highlight">SHIELD</span></span>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="grant_radar.html" class="nav-link">Grant Radar</a>
+            <a href="#" class="nav-link text-main">The Metric Trap</a>
+            <a href="evidence_locker.html" class="nav-link">Evidence Locker</a>
+            <a href="https://github.com/ELO2025X/The_Civil_Shield" class="btn-primary"><i
+                    class="fa-brands fa-github"></i> Source Code</a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 8rem 10% 4rem;">
+        <h1 class="section-title text-center">The <span class="gradient-text">Metric Trap</span></h1>
+        <p class="text-center text-muted" style="max-width: 700px; margin: 0 auto;">
+            Understanding the "Corruption Equation." How State Grants incentivize local agencies to manufacture crime.
+        </p>
+
+        <!-- FLOW CHART -->
+        <div class="flow-container">
+            <!-- Node 1 -->
+            <div class="flow-node">
+                <i class="fa-solid fa-sack-dollar node-icon"></i>
+                <div class="node-title">State Grants</div>
+                <div class="node-desc">Office of the Governor provides "Operation Lone Star" funding ($741k).</div>
+            </div>
+
+            <div class="flow-arrow"></div>
+
+            <!-- Node 2 -->
+            <div class="flow-node">
+                <i class="fa-solid fa-chart-line node-icon"></i>
+                <div class="node-title">Quotas & Metrics</div>
+                <div class="node-desc">Funding is contingent on "Stats" (Interdiction, Arrest Numbers).</div>
+            </div>
+
+            <div class="flow-arrow"></div>
+
+            <!-- Node 3 -->
+            <div class="flow-node">
+                <i class="fa-solid fa-handcuffs node-icon" style="color: var(--danger)"></i>
+                <div class="node-title status-badge" style="display: inline-block; margin-bottom: 0.5rem">YOU</div>
+                <div class="node-desc">Citizens are arrested on pretextual charges to fill the "Stat Sheet."</div>
+            </div>
+        </div>
+
+        <!-- SB 1851 TRACKER -->
+        <h2 class="section-title text-center" style="margin-top: 6rem; font-size: 2rem">SB 1851 Transparency Tracker
+        </h2>
+        <div class="sb1851-tracker glass-panel">
+            <div class="status-light"></div>
+            <div class="compliance-details">
+                <h3 style="color: var(--danger); margin-bottom: 0.5rem">NON-COMPLIANT</h3>
+                <p><strong>Entity:</strong> Victoria County Sheriff's Office</p>
+                <p><strong>Violation:</strong> Failure to report "Use of Force" and "Asset Forfeiture" data as required
+                    by Texas Senate Bill 1851.</p>
+                <p class="text-muted" style="margin-top: 1rem; font-size: 0.8rem">Last Audit: Jan 20, 2026</p>
+            </div>
+            <div class="action-box">
+                <button class="btn-large btn-outline" style="border-color: var(--danger); color: var(--danger)">Report
+                    to AG <i class="fa-solid fa-bullhorn"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fa-solid fa-shield-halved"></i> CIVIL SHIELD
+            </div>
+            <p class="copyright">Open Source Intelligence for the People. &copy; 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
